@@ -8,17 +8,19 @@ on:
 jobs:
   sync-to-huggingface:
     runs-on: ubuntu-latest
-    container:
-      image: alpine
+
     steps:
       - name: Install git
-        run: apk update && apk add openssh-client git
+        run: sudo apt update && sudo apt install -y git openssh-client
 
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Push to Hugging Face hub
+        env:
+          HF_TOKEN: ${{ secrets.HF_PERSONAL_TOKEN }}
         run: |
-          git config user.email "your-email@here"
-          git config user.name "your-identifier"
-          git push -f https://Aswadham:${HF_PERSONAL_TOKEN}@huggingface.co/spaces/Aswadham/llm main
+          git config user.email "22CS01042@iitbbs.ac.in"
+          git config user.name "Aswadham"
+          git remote add hf https://Aswadham:${HF_TOKEN}@huggingface.co/spaces/Aswadham/llm
+          git push -f hf main
