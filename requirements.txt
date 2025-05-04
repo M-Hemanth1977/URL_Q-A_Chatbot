@@ -1,0 +1,12 @@
+langchain
+python-dotenv
+langchain_community
+langchain-openai
+langchain-huggingface
+faiss-cpu
+huggingface_hub
+transformers
+langchain_google_genai
+google-generativeai
+streamlit
+langchain-groq
